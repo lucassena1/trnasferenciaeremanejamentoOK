@@ -1,0 +1,1368 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Transferência e Remanejamento EPT 2026 | 21ª GRE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --azul: #062b5f;
+      --azul-2: #0b3f85;
+      --azul-3: #eaf4ff;
+      --verde: #0a8f3d;
+      --verde-2: #13b85f;
+      --amarelo: #ffd12f;
+      --vermelho: #e93434;
+      --branco: #ffffff;
+      --fundo: #f3f7fb;
+      --texto: #102033;
+      --suave: #64748b;
+      --borda: rgba(6, 43, 95, .12);
+      --sombra: 0 16px 38px rgba(6, 43, 95, .12);
+      --raio: 22px;
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, Arial, sans-serif;
+      background: var(--fundo);
+      color: var(--texto)
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit
+    }
+
+    .app {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      min-height: 100vh
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      background: linear-gradient(180deg, var(--azul), #061a39);
+      color: #fff;
+      padding: 22px;
+      overflow: auto
+    }
+
+    .logo-box {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      margin-bottom: 24px
+    }
+
+    .logo-box img {
+      width: 74px;
+      max-height: 74px;
+      object-fit: contain;
+      background: #fff;
+      border-radius: 16px;
+      padding: 6px
+    }
+
+    .logo-box strong {
+      display: block;
+      font-size: 18px;
+      line-height: 1.05
+    }
+
+    .logo-box small {
+      color: #b9d7ff;
+      font-weight: 700
+    }
+
+    .menu-title {
+      font-size: 11px;
+      text-transform: uppercase;
+      color: #94bdf2;
+      font-weight: 900;
+      letter-spacing: .12em;
+      margin: 18px 0 9px
+    }
+
+    .menu a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 13px;
+      border-radius: 14px;
+      color: #e9f3ff;
+      font-weight: 800;
+      margin-bottom: 7px;
+      background: rgba(255, 255, 255, .06);
+      border: 1px solid rgba(255, 255, 255, .06)
+    }
+
+    .menu a:hover {
+      background: rgba(255, 255, 255, .16);
+      transform: translateX(2px)
+    }
+
+    .side-alert {
+      margin-top: 20px;
+      border-radius: 18px;
+      background: rgba(255, 209, 47, .14);
+      border: 1px solid rgba(255, 209, 47, .35);
+      padding: 14px;
+      font-weight: 800;
+      color: #fff4bb;
+      font-size: 13px;
+      line-height: 1.35
+    }
+
+    .main {
+      min-width: 0
+    }
+
+    .top {
+      background: #fff;
+      border-bottom: 1px solid var(--borda);
+      padding: 14px 26px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      box-shadow: 0 4px 20px rgba(6, 43, 95, .05)
+    }
+
+    .top b {
+      color: var(--azul)
+    }
+
+    .top-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      border: 0;
+      border-radius: 14px;
+      padding: 12px 15px;
+      font-weight: 900;
+      cursor: pointer;
+      transition: .2s;
+      color: #fff;
+      background: var(--azul);
+      box-shadow: 0 10px 22px rgba(6, 43, 95, .13)
+    }
+
+    .btn:hover {
+      transform: translateY(-2px)
+    }
+
+    .btn.green {
+      background: var(--verde)
+    }
+
+    .btn.yellow {
+      background: var(--amarelo);
+      color: #102033
+    }
+
+    .btn.white {
+      background: #fff;
+      color: var(--azul);
+      border: 1px solid rgba(6, 43, 95, .14)
+    }
+
+    .wrap {
+      max-width: 1180px;
+      margin: auto;
+      padding: 26px
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      border-radius: 30px;
+      background: linear-gradient(135deg, var(--azul) 0%, var(--azul-2) 55%, var(--verde) 100%);
+      color: #fff;
+      padding: 34px;
+      box-shadow: var(--sombra)
+    }
+
+    .hero:before {
+      content: "";
+      position: absolute;
+      right: -60px;
+      top: -80px;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: rgba(255, 209, 47, .22)
+    }
+
+    .hero:after {
+      content: "";
+      position: absolute;
+      right: 90px;
+      bottom: -70px;
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .12)
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 22px;
+      align-items: center
+    }
+
+    .badge {
+      display: inline-flex;
+      background: rgba(255, 255, 255, .14);
+      border: 1px solid rgba(255, 255, 255, .24);
+      border-radius: 999px;
+      padding: 9px 13px;
+      font-weight: 900;
+      margin-bottom: 14px
+    }
+
+    h1 {
+      font-size: clamp(34px, 5vw, 64px);
+      line-height: .95;
+      margin: 0 0 14px;
+      letter-spacing: -2px
+    }
+
+    .hero p {
+      font-size: 18px;
+      line-height: 1.55;
+      color: #e5f1ff;
+      max-width: 760px;
+      margin: 0
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 11px;
+      flex-wrap: wrap;
+      margin-top: 22px
+    }
+
+    .document-card {
+      background: rgba(255, 255, 255, .12);
+      border: 1px solid rgba(255, 255, 255, .22);
+      border-radius: 24px;
+      padding: 20px
+    }
+
+    .document-card h3 {
+      margin: 0 0 12px;
+      font-size: 22px
+    }
+
+    .doc-line {
+      background: rgba(255, 255, 255, .12);
+      border-radius: 15px;
+      padding: 12px;
+      margin: 9px 0
+    }
+
+    .doc-line small {
+      display: block;
+      color: #bde0ff;
+      font-weight: 800;
+      text-transform: uppercase;
+      font-size: 11px
+    }
+
+    .doc-line b {
+      font-size: 15px
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 18px
+    }
+
+    .stat {
+      background: #fff;
+      border: 1px solid var(--borda);
+      border-radius: 20px;
+      padding: 19px;
+      box-shadow: var(--sombra)
+    }
+
+    .stat .icon {
+      font-size: 30px
+    }
+
+    .stat b {
+      display: block;
+      color: var(--azul);
+      font-size: 28px;
+      margin-top: 6px
+    }
+
+    .stat span {
+      color: var(--suave);
+      font-weight: 800;
+      font-size: 13px
+    }
+
+    .section {
+      margin-top: 30px
+    }
+
+    .section-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 15px
+    }
+
+    .section-head h2 {
+      margin: 0;
+      color: var(--azul);
+      font-size: clamp(25px, 3vw, 40px);
+      letter-spacing: -1px
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--suave);
+      max-width: 590px;
+      line-height: 1.5;
+      font-weight: 600
+    }
+
+    .grid {
+      display: grid;
+      gap: 16px
+    }
+
+    .g2 {
+      grid-template-columns: repeat(2, 1fr)
+    }
+
+    .g3 {
+      grid-template-columns: repeat(3, 1fr)
+    }
+
+    .g4 {
+      grid-template-columns: repeat(4, 1fr)
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid var(--borda);
+      border-radius: var(--raio);
+      padding: 22px;
+      box-shadow: var(--sombra)
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      color: var(--azul);
+      font-size: 21px
+    }
+
+    .card p,
+    .card li {
+      line-height: 1.55;
+      color: #334155
+    }
+
+    .card ul {
+      margin: 8px 0 0;
+      padding-left: 20px
+    }
+
+    .label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border-radius: 999px;
+      padding: 7px 11px;
+      font-size: 12px;
+      font-weight: 900;
+      margin-bottom: 10px
+    }
+
+    .label.blue {
+      background: #eaf4ff;
+      color: var(--azul)
+    }
+
+    .label.green {
+      background: #e9f9ef;
+      color: var(--verde)
+    }
+
+    .label.yellow {
+      background: #fff7cf;
+      color: #765700
+    }
+
+    .label.red {
+      background: #fff0f0;
+      color: #991b1b
+    }
+
+    .summary {
+      background: linear-gradient(135deg, #fff, #f3fbff);
+      border-left: 7px solid var(--verde);
+      font-size: 18px
+    }
+
+    .summary strong {
+      color: var(--azul)
+    }
+
+    .download-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px
+    }
+
+    .download {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      min-height: 190px;
+      background: #fff;
+      border: 1px solid var(--borda);
+      border-radius: 22px;
+      padding: 20px;
+      box-shadow: var(--sombra);
+      position: relative;
+      overflow: hidden
+    }
+
+    .download:before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 6px;
+      background: var(--azul)
+    }
+
+    .download.green:before {
+      background: var(--verde)
+    }
+
+    .download.yellow:before {
+      background: var(--amarelo)
+    }
+
+    .download.red:before {
+      background: var(--vermelho)
+    }
+
+    .download .ico {
+      font-size: 35px
+    }
+
+    .download h3 {
+      margin: 0;
+      color: var(--azul)
+    }
+
+    .download p {
+      margin: 0;
+      color: var(--suave);
+      font-weight: 600;
+      line-height: 1.45
+    }
+
+    .download .btn {
+      margin-top: auto;
+      width: 100%
+    }
+
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 12px
+    }
+
+    .flow-step {
+      position: relative;
+      background: #fff;
+      border: 1px solid var(--borda);
+      border-radius: 20px;
+      padding: 18px;
+      text-align: center;
+      box-shadow: var(--sombra)
+    }
+
+    .flow-step:not(:last-child):after {
+      content: "→";
+      position: absolute;
+      right: -15px;
+      top: 43%;
+      color: var(--verde);
+      font-size: 24px;
+      font-weight: 900
+    }
+
+    .flow-step .circle {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      background: var(--azul);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 10px;
+      font-weight: 900
+    }
+
+    .flow-step b {
+      display: block;
+      color: var(--azul)
+    }
+
+    .flow-step small {
+      display: block;
+      color: var(--suave);
+      font-weight: 700;
+      margin-top: 5px
+    }
+
+    .timeline {
+      display: grid;
+      gap: 14px
+    }
+
+    .line-item {
+      display: grid;
+      grid-template-columns: 64px 1fr;
+      gap: 14px
+    }
+
+    .num {
+      width: 56px;
+      height: 56px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, var(--verde), #0b6932);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      font-weight: 900;
+      box-shadow: 0 12px 24px rgba(10, 143, 61, .23)
+    }
+
+    .compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px
+    }
+
+    .box-head {
+      padding: 15px 18px;
+      border-radius: 18px 18px 0 0;
+      color: #fff;
+      font-weight: 900
+    }
+
+    .origem .box-head {
+      background: var(--verde)
+    }
+
+    .destino .box-head {
+      background: var(--azul)
+    }
+
+    .box-body {
+      background: #fff;
+      border: 1px solid var(--borda);
+      border-top: 0;
+      border-radius: 0 0 18px 18px;
+      padding: 10px 18px;
+      box-shadow: var(--sombra)
+    }
+
+    .box-body div {
+      padding: 13px 0;
+      border-bottom: 1px solid #e8eef5;
+      font-weight: 700;
+      color: #334155
+    }
+
+    .box-body div:last-child {
+      border: 0
+    }
+
+    .alert-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px
+    }
+
+    .notice {
+      border-radius: 22px;
+      padding: 20px;
+      border: 1px solid;
+      box-shadow: var(--sombra);
+      font-weight: 700;
+      line-height: 1.5
+    }
+
+    .notice.ok {
+      background: #ecfdf5;
+      border-color: #bbf7d0;
+      color: #064e3b
+    }
+
+    .notice.att {
+      background: #fff7d6;
+      border-color: #fde68a;
+      color: #6b4e00
+    }
+
+    .notice.no {
+      background: #fff1f1;
+      border-color: #fecaca;
+      color: #7f1d1d
+    }
+
+    details {
+      background: #fff;
+      border: 1px solid var(--borda);
+      border-radius: 18px;
+      margin-bottom: 10px;
+      box-shadow: 0 8px 20px rgba(6, 43, 95, .06);
+      overflow: hidden
+    }
+
+    summary {
+      padding: 17px 19px;
+      cursor: pointer;
+      color: var(--azul);
+      font-weight: 900
+    }
+
+    details div {
+      padding: 0 19px 18px;
+      color: #334155;
+      line-height: 1.55
+    }
+
+    .possibility-card {
+      border-top: 6px solid var(--amarelo)
+    }
+
+    .possibility-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-top: 16px
+    }
+
+    .possibility-box {
+      border-radius: 18px;
+      padding: 17px;
+      border: 1px solid
+    }
+
+    .possibility-box h4 {
+      margin: 0 0 8px;
+      font-size: 18px
+    }
+
+    .possibility-box ul {
+      margin: 0;
+      padding-left: 20px
+    }
+
+    .ok-box {
+      background: #ecfdf5;
+      border-color: #bbf7d0
+    }
+
+    .att-box {
+      background: #fff7d6;
+      border-color: #fde68a
+    }
+
+    .no-box {
+      background: #fff1f1;
+      border-color: #fecaca
+    }
+
+    .blue-box {
+      background: #eaf4ff;
+      border-color: #bfdbfe
+    }
+
+    .restriction-line {
+      margin-top: 16px;
+      background: #fff1f1;
+      border: 1px solid #fecaca;
+      color: #7f1d1d;
+      border-radius: 18px;
+      padding: 16px;
+      font-weight: 700;
+      line-height: 1.5
+    }
+
+    .footer {
+      margin-top: 34px;
+      background: #fff;
+      border-top: 1px solid var(--borda);
+      padding: 26px;
+      text-align: center;
+      color: #667085;
+      font-weight: 800
+    }
+
+    .float-top {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--azul);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      box-shadow: var(--sombra);
+      z-index: 30
+    }
+
+    @media(max-width:1050px) {
+      .app {
+        grid-template-columns: 1fr
+      }
+
+      .sidebar {
+        position: relative;
+        height: auto
+      }
+
+      .menu {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px
+      }
+
+      .menu a {
+        margin: 0
+      }
+
+      .hero-content,
+      .g2,
+      .g3,
+      .g4,
+      .compare,
+      .alert-grid,
+      .download-grid,
+      .possibility-grid {
+        grid-template-columns: 1fr
+      }
+
+      .stats {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .flow {
+        grid-template-columns: 1fr
+      }
+
+      .flow-step:not(:last-child):after {
+        content: "↓";
+        right: 50%;
+        top: auto;
+        bottom: -22px;
+        transform: translateX(50%)
+      }
+    }
+
+    @media(max-width:620px) {
+      .top {
+        display: block
+      }
+
+      .top-actions {
+        margin-top: 10px
+      }
+
+      .wrap {
+        padding: 16px
+      }
+
+      .hero {
+        padding: 24px;
+        border-radius: 22px
+      }
+
+      .stats {
+        grid-template-columns: 1fr
+      }
+
+      .menu {
+        grid-template-columns: 1fr
+      }
+
+      .line-item {
+        grid-template-columns: 1fr
+      }
+
+      .hero-buttons .btn,
+      .top-actions .btn {
+        width: 100%
+      }
+
+      h1 {
+        letter-spacing: -1px
+      }
+
+      .sidebar {
+        padding: 18px
+      }
+    }
+
+    @media print {
+      @page {
+        size: A4;
+        margin: 12mm
+      }
+
+      * {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact
+      }
+
+      body {
+        background: #fff;
+        color: #111;
+        font-size: 12px
+      }
+
+      .sidebar,
+      .top,
+      .float-top,
+      .download-grid,
+      .footer,
+      .hero-buttons {
+        display: none !important
+      }
+
+      .app {
+        display: block !important
+      }
+
+      .main {
+        width: 100% !important
+      }
+
+      .wrap {
+        max-width: none !important;
+        padding: 0 !important
+      }
+
+      .hero {
+        color: #111 !important;
+        background: #fff !important;
+        border: 1px solid #ddd !important;
+        border-radius: 14px !important;
+        padding: 16px !important;
+        box-shadow: none !important;
+        page-break-inside: avoid
+      }
+
+      .hero:before,
+      .hero:after {
+        display: none !important
+      }
+
+      .hero-content {
+        display: block !important
+      }
+
+      .hero p {
+        color: #333 !important;
+        font-size: 12px !important
+      }
+
+      .document-card {
+        background: #f8fafc !important;
+        color: #111 !important;
+        border: 1px solid #ddd !important;
+        box-shadow: none !important;
+        margin-top: 10px
+      }
+
+      .doc-line {
+        background: #fff !important;
+        border: 1px solid #e5e7eb
+      }
+
+      .doc-line small {
+        color: #333 !important
+      }
+
+      h1 {
+        font-size: 25px !important;
+        line-height: 1.05 !important;
+        letter-spacing: 0 !important
+      }
+
+      .section {
+        margin-top: 14px !important;
+        break-inside: avoid
+      }
+
+      .section-head {
+        display: block !important;
+        margin-bottom: 8px !important
+      }
+
+      .section-head h2 {
+        font-size: 19px !important
+      }
+
+      .section-head p {
+        font-size: 11px !important
+      }
+
+      .stats,
+      .grid,
+      .g2,
+      .g3,
+      .g4,
+      .compare,
+      .alert-grid,
+      .possibility-grid,
+      .flow {
+        display: block !important
+      }
+
+      .stat,
+      .card,
+      .notice,
+      .flow-step,
+      .box-body,
+      .possibility-box {
+        box-shadow: none !important;
+        border: 1px solid #ddd !important;
+        border-radius: 12px !important;
+        margin: 0 0 8px !important;
+        padding: 10px !important;
+        break-inside: avoid;
+        page-break-inside: avoid
+      }
+
+      .flow-step:not(:last-child):after {
+        display: none !important
+      }
+
+      .line-item {
+        display: block !important
+      }
+
+      .num {
+        width: 32px !important;
+        height: 32px !important;
+        border-radius: 9px !important;
+        font-size: 16px !important;
+        margin-bottom: 5px !important
+      }
+
+      .box-head {
+        border-radius: 12px 12px 0 0 !important;
+        padding: 9px !important
+      }
+
+      .box-body {
+        border-radius: 0 0 12px 12px !important
+      }
+
+      .label {
+        padding: 4px 8px !important
+      }
+
+      .restriction-line {
+        break-inside: avoid;
+        page-break-inside: avoid
+      }
+    }
+  </style>
+</head>
+
+<body id="topo">
+  <div class="app">
+    <aside class="sidebar">
+      <div class="logo-box">
+        <img src="21grelogo.png" alt="Logo 21ª GRE" onerror="this.style.display='none'">
+        <div><strong>21ª GRE</strong><small>Educação Profissional</small></div>
+      </div>
+      <div class="menu-title">Navegação</div>
+      <nav class="menu">
+        <a href="#inicio">🏠 Início</a>
+        <a href="#downloads">📥 Downloads</a>
+        <a href="#resumo">📌 Resumo</a>
+        <a href="#conceitos">🔁 Conceitos</a>
+        <a href="#regras">📋 Regras</a>
+        <a href="#possibilidade5">🧩 Possibilidade 5</a>
+        <a href="#fluxo">🧭 Fluxo</a>
+        <a href="#responsabilidades">🏫 Responsabilidades</a>
+        <a href="#faq">❓ Perguntas</a>
+      </nav>
+      <div class="side-alert">⚠️ Material de apoio para consulta das escolas e equipes técnicas. Sempre conferir o documento oficial SEI.</div>
+    </aside>
+
+    <main class="main">
+      <div class="top">
+        <b>Ofício Circular SEDUC-PI/GAB/UETEP Nº 1/2026</b>
+        <div class="top-actions">
+          <a class="btn green" href="https://drive.google.com/file/d/1Yy9WOcqUIYsYSSns5Q8pZeMtHq8O8yAS/view?usp=sharing" target="_blank">📑 SEI</a>
+          <a class="btn yellow" href="https://drive.google.com/file/d/1HDVpFQs_JOQQnyfdTpPfyUhmILbqhiVH/view?usp=sharing" target="_blank">📊 Apresentação</a>
+        </div>
+      </div>
+
+      <div class="wrap">
+        <section class="hero" id="inicio">
+          <div class="hero-content">
+            <div>
+              <span class="badge">📄 Documento Oficial • EPT 2026</span>
+              <h1>Transferência e Remanejamento de Estudantes</h1>
+              <p>Guia institucional com os principais critérios, prazos, responsabilidades, integralização curricular, avaliação e certificação no âmbito da Educação Profissional e Tecnológica da Rede Estadual do Piauí.</p>
+              <div class="hero-buttons">
+                <a class="btn yellow" href="#downloads">⬇️ Acessar Downloads</a>
+                <a class="btn white" href="#regras">📋 Ver Regras</a>
+              </div>
+            </div>
+            <aside class="document-card">
+              <h3>Dados do Ofício</h3>
+              <div class="doc-line"><small>Assunto</small><b>Transferência e remanejamento na EPT</b></div>
+              <div class="doc-line"><small>Processo SEI</small><b>00011.040322/2026-18</b></div>
+              <div class="doc-line"><small>Documento SEI</small><b>0024275324</b></div>
+              <div class="doc-line"><small>Data</small><b>22 de maio de 2026</b></div>
+            </aside>
+          </div>
+        </section>
+
+        <section class="stats">
+          <div class="stat">
+            <div class="icon">🎯</div><b>01</b><span>Objetivo central</span>
+          </div>
+          <div class="stat">
+            <div class="icon">🔁</div><b>02</b><span>Tipos de movimentação</span>
+          </div>
+          <div class="stat">
+            <div class="icon">🏫</div><b>02</b><span>Escolas envolvidas</span>
+          </div>
+          <div class="stat">
+            <div class="icon">📎</div><b>02</b><span>Anexos orientadores</span>
+          </div>
+        </section>
+
+        <section class="section" id="downloads">
+          <div class="section-head">
+            <h2>Downloads e acessos</h2>
+            <p>Área rápida para abrir ou baixar os documentos de apoio.</p>
+          </div>
+          <div class="download-grid">
+            <article class="download green">
+              <div class="ico">📑</div>
+              <h3>Documento SEI</h3>
+              <p>Ofício oficial com código verificador e processo SEI.</p><a class="btn green" target="_blank" href="https://drive.google.com/file/d/1Yy9WOcqUIYsYSSns5Q8pZeMtHq8O8yAS/view?usp=sharing">Abrir / baixar</a>
+            </article>
+            <article class="download yellow">
+              <div class="ico">📊</div>
+              <h3>Apresentação</h3>
+              <p>Material visual para reunião, orientação ou formação.</p><a class="btn yellow" target="_blank" href="https://drive.google.com/file/d/1HDVpFQs_JOQQnyfdTpPfyUhmILbqhiVH/view?usp=sharing">Abrir slides</a>
+            </article>
+            <article class="download red">
+              <div class="ico">🖨️</div>
+              <h3>Imprimir página</h3>
+              <p>Gera uma versão limpa da página para impressão.</p><button class="btn" onclick="window.print()">Imprimir</button>
+            </article>
+          </div>
+        </section>
+
+        <section class="section" id="resumo">
+          <div class="section-head">
+            <h2>Resumo executivo</h2>
+            <p>Leitura rápida para equipes gestoras, coordenações e técnicos.</p>
+          </div>
+          <article class="card summary">
+            <p><strong>O ofício orienta as Gerências Regionais e unidades escolares</strong> sobre os procedimentos de transferência e remanejamento de estudantes da Educação Profissional e Tecnológica, estabelecendo critérios para análise, prazos, compatibilidade curricular, integralização de carga horária e responsabilidades das escolas de origem e destino.</p>
+          </article>
+        </section>
+
+        <section class="section" id="conceitos">
+          <div class="section-head">
+            <h2>Conceitos principais</h2>
+            <p>Diferença entre transferência e remanejamento.</p>
+          </div>
+          <div class="grid g2">
+            <article class="card"><span class="label blue">🔁 Transferência</span>
+              <h3>Mudança envolvendo outra rede</h3>
+              <p>Ato administrativo e pedagógico que formaliza o deslocamento do estudante de uma unidade de ensino para outra, inclusive quando há entrada ou saída de outra rede pública ou privada.</p>
+            </article>
+            <article class="card"><span class="label green">🏫 Remanejamento</span>
+              <h3>Mudança dentro da Rede Estadual</h3>
+              <p>Desvinculação do estudante de uma escola estadual e vinculação a outra escola estadual, desde que haja vaga, análise curricular e possibilidade de continuidade formativa.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section" id="regras">
+          <div class="section-head">
+            <h2>Regras principais</h2>
+            <p>Critérios que precisam ser conferidos antes do deferimento.</p>
+          </div>
+          <div class="timeline">
+            <div class="line-item">
+              <div class="num">1</div>
+              <article class="card"><span class="label blue">Solicitação</span>
+                <h3>Quem pode solicitar</h3>
+                <p>Responsável legal, quando o estudante for menor de 18 anos ou pessoa com deficiência não apta a realizar a solicitação. O próprio estudante pode solicitar quando for maior de 18 anos.</p>
+              </article>
+            </div>
+            <div class="line-item">
+              <div class="num">2</div>
+              <article class="card"><span class="label green">Admissibilidade</span>
+                <h3>Quando pode ocorrer</h3>
+                <p>Na mesma escola ou entre escolas da Rede Estadual, no mesmo município ou em municípios distintos, desde que haja vaga e observância das normas vigentes.</p>
+              </article>
+            </div>
+            <div class="line-item">
+              <div class="num">3</div>
+              <article class="card"><span class="label blue">Mesmo curso</span>
+                <h3>Entre turmas, modalidades ou ofertas</h3>
+                <p>Pode ocorrer no mesmo curso técnico ou FIC, independentemente da série ou módulo, desde que respeitadas as normas e a integralização da carga horária.</p>
+              </article>
+            </div>
+            <div class="line-item">
+              <div class="num">4</div>
+              <article class="card"><span class="label yellow">Cursos diferentes</span>
+                <h3>Prazos e recomposição</h3>
+                <ul>
+                  <li><b>Ensino Médio Integrado:</b> 1ª série até o final do 1º trimestre; 2ª série até o final do 1º trimestre, condicionada à recomposição das disciplinas técnicas anteriores.</li>
+                  <li><b>EJA:</b> movimentações até o 1º bimestre, conforme módulo e necessidade de recomposição dos componentes técnicos.</li>
+                </ul>
+              </article>
+            </div>
+            <div class="line-item">
+              <div class="num">5</div>
+              <article class="card"><span class="label red">Restrição</span>
+                <h3>Ambiente e Saúde</h3>
+                <p>Não é permitido ingresso por transferência ou remanejamento nos cursos de Enfermagem, Farmácia, Análises Clínicas e FIC em Cuidados de Idosos. Admite-se apenas a saída desses cursos para outras formações.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="possibilidade5">
+          <div class="section-head">
+            <h2>Diferentes ofertas da EPT</h2>
+            <p>Resumo detalhado do item 5 do ofício, com foco nos casos em que o estudante pretende mudar para outro curso ou oferta.</p>
+          </div>
+          <article class="card possibility-card">
+            <span class="label yellow">📌 Item 5 do Ofício</span>
+            <h3>Quando a transferência ou remanejamento entre cursos distintos pode ser analisada</h3>
+            <p>Para fins de certificação dos cursos técnicos integrados ao Ensino Médio Regular, EJA e cursos FIC, a mudança entre cursos diferentes deve respeitar prazos específicos, disponibilidade de vaga, compatibilidade curricular e recomposição dos componentes técnicos não cursados.</p>
+            <div class="possibility-grid">
+              <div class="possibility-box ok-box">
+                <h4>✅ Ensino Médio Integrado</h4>
+                <ul>
+                  <li><b>1ª série:</b> permitido até o final do 1º trimestre do ano letivo.</li>
+                  <li><b>2ª série:</b> permitido até o final do 1º trimestre, condicionado à recomposição das disciplinas técnicas da série anterior.</li>
+                </ul>
+              </div>
+              <div class="possibility-box att-box">
+                <h4>🟡 Educação de Jovens e Adultos</h4>
+                <ul>
+                  <li><b>Módulos VII, VIII e IX:</b> até o término do 1º bimestre do respectivo módulo.</li>
+                  <li><b>Módulos I, II, III e IV:</b> até o 1º bimestre, com recomposição dos componentes técnicos dos módulos anteriores, quando necessário.</li>
+                </ul>
+              </div>
+              <div class="possibility-box no-box">
+                <h4>🚫 Regra geral de vedação</h4>
+                <ul>
+                  <li>No Ensino Médio Regular, não se admite mudança na 2ª série após o 1º trimestre nem na 3ª série.</li>
+                  <li>Na EJA, não se admite mudança no Módulo IX e no Módulo IV após o 1º bimestre.</li>
+                </ul>
+              </div>
+              <div class="possibility-box blue-box">
+                <h4>🧾 Exceções e análise da SEDUC</h4>
+                <ul>
+                  <li>Solicitações excepcionais precisam de justificativa fundamentada.</li>
+                  <li>A análise deve considerar vaga, legislação vigente, matriz curricular e possibilidade real de integralização.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="restriction-line">
+              <b>Restrição específica:</b> nos cursos do eixo Ambiente e Saúde — Enfermagem, Farmácia, Análises Clínicas e FIC em Cuidados de Idosos — não é permitido ingresso por transferência ou remanejamento oriundo de outros cursos. Nesses casos, admite-se apenas a saída do estudante para outras formações.
+            </div>
+          </article>
+        </section>
+
+
+        <section class="section" id="fluxo">
+          <div class="section-head">
+            <h2>Fluxo recomendado</h2>
+            <p>Sequência simples para orientar o atendimento nas escolas.</p>
+          </div>
+          <div class="flow">
+            <div class="flow-step">
+              <div class="circle">1</div><b>Solicitação</b><small>Aluno ou responsável</small>
+            </div>
+            <div class="flow-step">
+              <div class="circle">2</div><b>Vaga</b><small>Escola de destino</small>
+            </div>
+            <div class="flow-step">
+              <div class="circle">3</div><b>Matriz</b><small>Compatibilidade</small>
+            </div>
+            <div class="flow-step">
+              <div class="circle">4</div><b>Decisão</b><small>Deferir ou indeferir</small>
+            </div>
+            <div class="flow-step">
+              <div class="circle">5</div><b>Plano</b><small>Integralização</small>
+            </div>
+            <div class="flow-step">
+              <div class="circle">6</div><b>Registro</b><small>Sistema e certificação</small>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-head">
+            <h2>Integralização, avaliação e certificação</h2>
+            <p>Garantia de cumprimento da matriz curricular do curso de destino.</p>
+          </div>
+          <div class="grid g3">
+            <article class="card"><span class="label green">📚 Integralização</span>
+              <h3>Plano obrigatório</h3>
+              <p>Quando houver lacunas de carga horária ou componentes não cursados, a escola de destino deve elaborar o Plano de Integralização Curricular.</p>
+            </article>
+            <article class="card"><span class="label blue">📝 Avaliação</span>
+              <h3>Conforme a rede</h3>
+              <p>A avaliação dos componentes objeto de integralização seguirá a sistemática adotada pela Rede Estadual do Piauí.</p>
+            </article>
+            <article class="card"><span class="label yellow">✅ Certificação</span>
+              <h3>Matriz integral</h3>
+              <p>A certificação fica condicionada ao cumprimento integral da matriz curricular do curso de destino, incluindo atividades complementares.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section" id="responsabilidades">
+          <div class="section-head">
+            <h2>Responsabilidades das escolas</h2>
+            <p>Organização do papel da escola de origem e da escola de destino.</p>
+          </div>
+          <div class="compare">
+            <div class="origem">
+              <div class="box-head">🏫 Escola de origem</div>
+              <div class="box-body">
+                <div>Emitir declaração, histórico escolar, ficha individual e documentos necessários.</div>
+                <div>Efetivar a transferência ou remanejamento nos sistemas oficiais.</div>
+                <div>Orientar o estudante e/ou responsável sobre procedimentos e prazos.</div>
+              </div>
+            </div>
+            <div class="destino">
+              <div class="box-head">🎯 Escola de destino</div>
+              <div class="box-body">
+                <div>Analisar existência de vaga no curso pretendido.</div>
+                <div>Verificar compatibilidade entre matrizes curriculares.</div>
+                <div>Deliberar pelo deferimento ou indeferimento da solicitação.</div>
+                <div>Realizar matrícula e registros no sistema oficial.</div>
+                <div>Informar horários, atividades e prazos de integralização.</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-head">
+            <h2>Alertas de decisão</h2>
+            <p>Quadro rápido para evitar erro no processo.</p>
+          </div>
+          <div class="alert-grid">
+            <div class="notice ok">🟢 <b>Permitido:</b><br>Remanejamento na mesma escola ou entre escolas estaduais, desde que haja vaga e compatibilidade curricular.</div>
+            <div class="notice att">🟡 <b>Atenção:</b><br>Cursos diferentes exigem análise de prazo, recomposição e Plano de Integralização Curricular.</div>
+            <div class="notice no">🔴 <b>Não permitido:</b><br>Ingresso em cursos do eixo Ambiente e Saúde por transferência ou remanejamento oriundo de outros cursos.</div>
+          </div>
+        </section>
+
+        <section class="section" id="faq">
+          <div class="section-head">
+            <h2>Perguntas rápidas</h2>
+            <p>Consultas frequentes com base no ofício.</p>
+          </div>
+          <details open>
+            <summary>O estudante pode mudar de curso na 3ª série do Ensino Médio?</summary>
+            <div>Como regra geral, não. O documento indica que não será admitido remanejamento ou transferência na 3ª série, em razão da impossibilidade de recomposição dos componentes técnicos anteriores.</div>
+          </details>
+          <details>
+            <summary>A certificação pode ocorrer sem cumprir toda a matriz?</summary>
+            <div>Não. A certificação depende do cumprimento integral da matriz curricular do curso de destino, incluindo atividades de integralização e complementação quando necessárias.</div>
+          </details>
+          <details>
+            <summary>O que a escola deve fazer se faltarem componentes curriculares?</summary>
+            <div>Deve elaborar Plano de Integralização Curricular e registrar as atividades na ficha individual de acompanhamento do estudante.</div>
+          </details>
+          <details>
+            <summary>Casos excepcionais podem ser analisados?</summary>
+            <div>Sim. Os casos omissos ou excepcionais devem ser analisados pela SEDUC/PI, observando a legislação vigente e os princípios do direito à educação, permanência e êxito escolar.</div>
+          </details>
+        </section>
+
+        <section class="section">
+          <div class="section-head">
+            <h2>Anexos do documento</h2>
+            <p>Modelos citados no ofício.</p>
+          </div>
+          <div class="grid g2">
+            <article class="card"><span class="label blue">Anexo I</span>
+              <h3>Plano de Integralização Curricular</h3>
+              <p>Modelo para identificação do estudante, análise curricular, diagnóstico, detalhamento dos componentes, estratégias pedagógicas e avaliação.</p>
+            </article>
+            <article class="card"><span class="label green">Anexo II</span>
+              <h3>Ficha individual de acompanhamento</h3>
+              <p>Modelo para registrar atividades de adaptação/readaptação, carga horária cumprida, instrumento avaliativo, nota e resultado.</p>
+            </article>
+          </div>
+        </section>
+      </div>
+      <footer class="footer">21ª GRE • Página informativa sobre Transferência e Remanejamento na Educação Profissional e Tecnológica • Ofício Circular nº 01/2026</footer>
+    </main>
+  </div>
+  <a class="float-top" href="#topo" aria-label="Voltar ao topo">↑</a>
+</body>
+
+</html>
